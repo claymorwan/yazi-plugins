@@ -2,10 +2,10 @@
 local function run_shell(isblock, noskip)
 	local value, event = ya.input({
 		title = "Shell" .. (isblock and (noskip and " (block no skip)" or " (block)") or ""),
-		position = { "top-center", y = 3, w = 40 },
+		pos = { "top-center", y = 3, w = 40 },
 	})
 
-	local noskip_cmd = (noskip and "echo -en '\nPress [Enter] to continue'; read;" or "")
+	local noskip_cmd = (noskip and "echo -e '\nPress [Enter] to continue'; read;" or "")
 
 	if event == 1 then
 		ya.emit("shell", {

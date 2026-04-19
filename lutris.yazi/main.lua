@@ -15,11 +15,6 @@ local get_hovered_path = ya.sync(function(state)
 	end
 end)
 
--- Get file name
-local function get_file_name(url)
-	return url:match("^.+/(.+)$")
-end
-
 -- makes the install file (probably a better way to do it but i don't car)
 local function mk_yml_file(name, game_id, exe, pfx, is_wine)
 	local runner = (is_wine and "wine" or "linux")
