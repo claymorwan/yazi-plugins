@@ -5,7 +5,10 @@ local function run_shell(isblock, noskip)
 		pos = { "top-center", y = 3, w = 40 },
 	})
 
-	local noskip_cmd = (noskip and "echo -e '\nPress [Enter] to continue'; read;" or "")
+	local is_nu = ((Url(os.getenv("SHELL")).name == "nu") and true or false)
+	local echo_cmd = (is_nu and "print" or "echo -e")
+	local wait_cmd = (is_nu and "input" or "read")
+	local noskip_cmd = (noskip and echo_cmd .. " 'Press [Enter] to continue'; " .. wait_cmd .. ";" or "")
 
 	if event == 1 then
 		ya.emit("shell", {
